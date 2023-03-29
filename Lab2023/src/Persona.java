@@ -1,41 +1,37 @@
 public class Persona {
-    private int edad;
-    private int direccion;
     private String nombre;
+    private int edad;
+    private String direccion;
     public Persona(){
-        this.edad=0;
-        this.direccion=0;
         this.nombre="N/A";
+        this.edad=0;
+        this.direccion=" ";
     }
-    public Persona(int edad, int direccion, String nombre){
+    public Persona(String nombre,int edad, String direccion){
+        this.nombre=nombre;
         this.edad=edad;
         this.direccion=direccion;
-        this.nombre=nombre;
     }
-
-    public int getDireccion() {
-        return direccion;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
     public String getNombre() {
         return nombre;
     }
-
-    public void setDireccion(int direccion) {
-        this.direccion = direccion;
+    public int getEdad() {
+        return edad;
     }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
+    public String getDireccion() { return direccion; }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+
+
+
 
     public void mostrarDatos(){
         System.out.println("Edad: "+edad+" direccion: "+direccion+" nombre: "+nombre);

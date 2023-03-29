@@ -5,22 +5,25 @@ public class ej2_2 {
     public static void main(String[] args) {
         Scanner palabras = new Scanner(System.in);
         int t_array;
-        ArrayList<String> cadena  = new ArrayList<String>();
+        char letra;
+        String palabra = " ";
+        ArrayList<String> cadena = new ArrayList<String>();
         System.out.println("ingresar cantidad de palabras:");
         t_array = palabras.nextInt();
         for (int i = 0; i < t_array; i++) {
-            String palabra;
             System.out.println("ingresa la palabra " + (i + 1));
-            palabra = palabras.nextLine();
+            palabra = palabras.next();
             cadena.add(palabra);
         }
         System.out.println("Ingrese la letra para filtrar:");
-        String letra = palabras.nextLine().substring(0, 1);
+        letra = palabras.next().charAt(0);
         System.out.println("Las cadenas que empiezan con " + letra + " son:");
-        }
-        for(String k: cadena) {
-            if (cadena.startsWith(letra)) {
-                System.out.println(cadena);
+
+        for (String palabraActual : cadena) {
+            if (palabraActual.charAt(0) == letra) {
+                System.out.println(palabraActual);
             }
+        }
     }
 }
+
