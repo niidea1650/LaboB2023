@@ -40,13 +40,15 @@ public class Familia extends Familiar {
         return persona;
     }
 
-    public int menosCalorias(){
+    public Familiar menosCalorias(){
         int minC = -1;
+        Familiar persona = null;
         for (Familiar familiar : familias){
             if (minC == -1 || familiar.cantCalorias() < minC){
                 minC = familiar.cantCalorias();
+                persona = familiar;
             }
         }
-        return minC;
+        return persona;
     }
 }
