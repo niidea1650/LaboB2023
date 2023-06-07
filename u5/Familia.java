@@ -28,14 +28,16 @@ public class Familia extends Familiar {
         return sumaT / familias.size();
     }
 
-    public int masCalorias(){
+    public Familiar masCalorias(){
         int maxC = 0;
+        Familiar persona = null;
         for (Familiar familiar : familias){
             if (familiar.cantCalorias() > maxC){
                 maxC = familiar.cantCalorias();
+                persona = familiar;
             }
         }
-        return maxC;
+        return persona;
     }
 
     public int menosCalorias(){
