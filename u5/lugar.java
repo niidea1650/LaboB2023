@@ -38,4 +38,8 @@ public class lugar {
         this.codigo = codigo;
         this.coordenada = coordenada;
     }
+
+    public int calcPoblacion(){
+        return 0;
+    }
 }
