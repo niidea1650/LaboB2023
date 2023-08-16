@@ -1,0 +1,120 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema politv
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema politv
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `politv` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema PoliTV
+-- -----------------------------------------------------
+USE `politv` ;
+
+-- -----------------------------------------------------
+-- Table `politv`.`Usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `politv`.`Usuarios` (
+  `NdeUsuario` VARCHAR(45) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `apellido` VARCHAR(45) NOT NULL,
+  `mail` VARCHAR(45) NOT NULL,
+  `contrania` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`NdeUsuario`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `politv`.`Programas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `politv`.`Programas` (
+  `titulo` VARCHAR(45) NOT NULL,
+  `desc` VARCHAR(45) NOT NULL,
+  `duracion` VARCHAR(45) NOT NULL,
+  `hora_dia` DATETIME NOT NULL,
+  PRIMARY KEY (`titulo`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `politv`.`Programa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `politv`.`Programa` (
+  `IdPrograma` INT NOT NULL,
+  `titulo` INT NOT NULL,
+  `desc` VARCHAR(45) NOT NULL,
+  `duracion` VARCHAR(45) NOT NULL,
+  `Dia` VARCHAR(45) NOT NULL,
+  `Hora` TIME NOT NULL,
+  `Cantidad_Determinada_Productores` INT NOT NULL,
+  `Cantidad_Determinada_Conductores` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`IdPrograma`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `politv`.`Personal`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `politv`.`Personal` (
+  `id_personal` INT NOT NULL,
+  `nombrep` VARCHAR(45) NOT NULL,
+  `apellidop` VARCHAR(45) NOT NULL,
+  `mailp` VARCHAR(45) NOT NULL,
+  `Rol` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_personal`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `politv`.`Personal_has_Programa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `politv`.`Personal_has_Programa` (
+  `Personal_id_personal` INT NOT NULL,
+  `Programa_IdPrograma` INT NOT NULL,
+  PRIMARY KEY (`Personal_id_personal`, `Programa_IdPrograma`),
+  INDEX `fk_Personal_has_Programa_Programa1_idx` (`Programa_IdPrograma` ASC) VISIBLE,
+  INDEX `fk_Personal_has_Programa_Personal1_idx` (`Personal_id_personal` ASC) VISIBLE,
+  CONSTRAINT `fk_Personal_has_Programa_Personal1`
+    FOREIGN KEY (`Personal_id_personal`)
+    REFERENCES `politv`.`Personal` (`id_personal`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Personal_has_Programa_Programa1`
+    FOREIGN KEY (`Programa_IdPrograma`)
+    REFERENCES `politv`.`Programa` (`IdPrograma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `politv`.`Vip`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `politv`.`Vip` (
+  `Usuarios_NdeUsuario` VARCHAR(45) NOT NULL,
+  `Programa_IdPrograma` INT NOT NULL,
+  PRIMARY KEY (`Usuarios_NdeUsuario`, `Programa_IdPrograma`),
+  INDEX `fk_Usuarios_has_Programa_Programa1_idx` (`Programa_IdPrograma` ASC) VISIBLE,
+  INDEX `fk_Usuarios_has_Programa_Usuarios1_idx` (`Usuarios_NdeUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Usuarios_has_Programa_Usuarios1`
+    FOREIGN KEY (`Usuarios_NdeUsuario`)
+    REFERENCES `politv`.`Usuarios` (`NdeUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuarios_has_Programa_Programa1`
+    FOREIGN KEY (`Programa_IdPrograma`)
+    REFERENCES `politv`.`Programa` (`IdPrograma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
