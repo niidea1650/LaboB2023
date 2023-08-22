@@ -1,16 +1,26 @@
 package U6.dos;
 
 public class Gato extends Mascotas{
-    public Gato(String nombre, String saludo, String duenio) {
-        super(nombre, saludo, duenio, Tipo.GATO);
+    public Gato(String nombre, String duenio) {
+        super(nombre, duenio,"Miau", Tipo.GATO);
     }
-    private Integer alegria = 0;
+    private int alegria;
+
+    public int getAlegria() {
+        return alegria;
+    }
+
+    public void setAlegria(int alegria) {
+        this.alegria = alegria;
+    }
+
+
     @Override
     void saludo(boolean esDuenio) {
         if(esDuenio) {
-            System.out.println("Miau");
+            System.out.print("Miau");
         }else{
-            System.out.println("MIAU!");
+            System.out.print("MIAU!");
         }
     }
 
@@ -19,4 +29,11 @@ public class Gato extends Mascotas{
             alegria = alegria + 1;
     }
 
+    @Override
+    void alegria() {
+        for (int i = 0; i < alegria; i++ ){
+            saludo(true);
+            System.out.print(", ");
+        }
+    }
 }

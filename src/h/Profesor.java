@@ -18,4 +18,9 @@ package h;
         public float obtenerDescuento() {
             return porcentajeDescuento;
         }
+
+        @Override
+        void mostrarDatos() {
+
+        }
     }

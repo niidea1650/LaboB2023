@@ -1,5 +1,7 @@
 package U6.dos;
 
+import java.util.HashSet;
+
 public abstract class Mascotas {
     private String nombre;
     private String duenio;
@@ -52,8 +54,8 @@ public abstract class Mascotas {
     }
 
 
-
     abstract void saludo(boolean esDuenio);
 
     abstract void alimentar();
+    abstract void alegria();
 }

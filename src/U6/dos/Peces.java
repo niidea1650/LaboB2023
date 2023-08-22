@@ -3,10 +3,17 @@ package U6.dos;
 public class Peces extends Mascotas{
 
     private int vida = 10;
-    public Peces(String nombre, String saludo, String duenio) {
-        super(nombre, saludo, duenio, Tipo.PEZ);
+    public Peces(String nombre, String duenio) {
+        super(nombre, duenio, "Gluc", Tipo.PEZ);
     }
 
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
     @Override
     void saludo(boolean esDuenio) {
         if(esDuenio) {
@@ -22,5 +29,9 @@ public class Peces extends Mascotas{
         vida = vida + 1;
     }
 
+    @Override
+    void alegria() {
+
+    }
 
 }
