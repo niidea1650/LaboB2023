@@ -37,7 +37,7 @@ public class Main {
         pa1.saludo(true);
         pa1.saludo(false);
         System.out.println(sistema.getMascota().size());
-        sistema.saludar(pe1, "barrio");
+        sistema.saludar(pe1, "Nahuel");
         System.out.println(sistema.getMascota().size());
 
 
