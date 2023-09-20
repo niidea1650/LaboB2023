@@ -13,6 +13,7 @@ public class Sistema {
         return objetos;
     }
 
+
     public void setObjetos(HashSet<Objeto> objetos) {
         this.objetos = objetos;
     }

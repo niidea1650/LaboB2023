@@ -7,7 +7,7 @@ public class Revista extends Leer implements Prestar{
 
     public Revista(int codigo, String titulo, int anio_publicado, LocalDate Publicado) {
         super(codigo, titulo, anio_publicado);
-        this.Publicado = LocalDate.now();
+        this.Publicado = Publicado;
     }
 
 
