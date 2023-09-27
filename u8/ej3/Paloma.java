@@ -49,4 +49,13 @@ public class Paloma implements Menasje{
     public void enviarMensaje() {
 
     }
+
+    @Override
+    public void hacerCampaña() {
+        if(this.aprendioMapa == true){
+        System.out.println("Lanzando un papelito que dice: Vote por el partido para un mejor futuro");
+    }else{
+            System.out.println("no puede");
+        }
+}
 }

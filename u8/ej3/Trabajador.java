@@ -1,16 +1,22 @@
 package u8.ej3;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Trabajador extends Persona implements Menasje{
     private int cuil;
     private int sueldo;
     private int direccion;
-    public Trabajador(String nombre, String apellido, int dni, LocalDate fechaNac, int cuil, int sueldo, int direccnion) {
+    private LocalTime empieza;
+    private LocalTime termina;
+    public Trabajador(String nombre, String apellido, int dni, LocalDate fechaNac, int cuil, int sueldo, int direccnion, LocalTime empieza,LocalTime termina) {
         super(nombre, apellido, dni, fechaNac);
         this.cuil = cuil;
         this.sueldo = sueldo;
         this.direccion = direccnion;
+        this.termina = termina;
+        this.empieza = empieza;
     }
 
     public int getCuil() {
@@ -41,5 +47,13 @@ public class Trabajador extends Persona implements Menasje{
     @Override
     public void enviarMensaje() {
 
+    }
+    @Override
+    public void hacerCampaña() {
+        if(this.empieza.isBefore(LocalTime.now()) && this.termina.isAfter(LocalTime.now()) ){
+            System.out.println("Yo," + this.getNombre() + "te invito a que: Vote por el partido para un mejor futuro" );
+        }else{
+            System.out.println("no puede");
+        }
     }
 }

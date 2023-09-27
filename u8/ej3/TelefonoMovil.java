@@ -7,12 +7,33 @@ public class TelefonoMovil implements Menasje{
     private Compania compania;
     private int numeroCelular;
 
-    public TelefonoMovil(int numeroSerie, String fabricante, String modelo, Compania compania, int numeroCelular) {
+    private boolean prendido;
+    private int credito;
+
+    public TelefonoMovil(int numeroSerie, String fabricante, String modelo, Compania compania, int numeroCelular, boolean prendido, int credito) {
         this.numeroSerie = numeroSerie;
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.compania = compania;
         this.numeroCelular = numeroCelular;
+        this.credito = credito;
+        this.prendido = prendido;
+    }
+
+    public boolean isPrendido() {
+        return prendido;
+    }
+
+    public void setPrendido(boolean prendido) {
+        this.prendido = prendido;
+    }
+
+    public int getCredito() {
+        return credito;
+    }
+
+    public void setCredito(int credito) {
+        this.credito = credito;
     }
 
     public int getNumeroSerie() {
@@ -57,6 +78,13 @@ public class TelefonoMovil implements Menasje{
 
     @Override
     public void enviarMensaje() {
-
+    }
+    @Override
+    public void hacerCampaña() {
+        if(this.prendido == true && this.credito > 0){
+            System.out.println("Conectando con la antena más cercana: Vote por el partido para un mejor futuro");
+        }else{
+            System.out.println("no puede");
+        }
     }
 }
