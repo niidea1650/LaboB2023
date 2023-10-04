@@ -45,9 +45,14 @@ public class Trabajador extends Persona implements Menasje{
 
 
     @Override
-    public void enviarMensaje() {
-
+    public void enviarMensaje(Partido partido) {
+        if (this.empieza.isBefore(LocalTime.now()) && this.termina.isAfter(LocalTime.now()) ){
+            System.out.println(partido);
+        }else{
+            System.out.println("no puede mandarlo");
+        }
     }
+
     @Override
     public void hacerCampaña() {
         if(this.empieza.isBefore(LocalTime.now()) && this.termina.isAfter(LocalTime.now()) ){

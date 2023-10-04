@@ -1,5 +1,7 @@
 package u8.ej3;
 
+import java.time.LocalTime;
+
 public class TelefonoMovil implements Menasje{
     private int numeroSerie;
     private String fabricante;
@@ -76,9 +78,16 @@ public class TelefonoMovil implements Menasje{
         this.numeroCelular = numeroCelular;
     }
 
+
     @Override
-    public void enviarMensaje() {
+    public void enviarMensaje(Partido partido) {
+        if (this.prendido == true && this.credito > 0){
+            System.out.println(partido);
+        }else{
+            System.out.println("no puede mandarlo");
+        }
     }
+
     @Override
     public void hacerCampaña() {
         if(this.prendido == true && this.credito > 0){

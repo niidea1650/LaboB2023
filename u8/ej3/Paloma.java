@@ -45,9 +45,14 @@ public class Paloma implements Menasje{
         this.aprendioMapa = aprendioMapa;
     }
 
-    @Override
-    public void enviarMensaje() {
 
+    @Override
+    public void enviarMensaje(Partido partido) {
+        if (this.aprendioMapa == true){
+            System.out.println(partido);
+        }else{
+            System.out.println("no se sabe el mapa");
+        }
     }
 
     @Override
