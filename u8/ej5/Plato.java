@@ -5,6 +5,16 @@ public class Plato {
     private String descripcion;
     private int precio;
     private Tipo tipo;
+    private Chef creador;
+
+
+    public Plato(String nombre, String descripcion, int precio, Tipo tipo, Chef creador) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.creador = creador;
+    }
 
     public Plato(String nombre, String descripcion, int precio, Tipo tipo) {
         this.nombre = nombre;
@@ -44,5 +54,12 @@ public class Plato {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
-    
+
+    public Chef getCreador() {
+        return creador;
+    }
+
+    public void setCreador(Chef creador) {
+        this.creador = creador;
+    }
 }
